@@ -5,7 +5,7 @@ class Card:
         print(raw_row[0])
 
 
-with open('example_collection_2.csv', 'r') as csv_file:
+with open('./example_data/example_collection_2.csv', 'r') as csv_file:
     reader = csv.reader(csv_file)
     next(reader) # skip first row
     for raw_row in reader:
