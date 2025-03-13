@@ -16,6 +16,9 @@ class Card:
         self.rarity = row_dict['Rarity']
         self.set = row_dict['Set']
         self.collector_number = row_dict['Collector #']
+        self.premium = row_dict['Premium']
+        self.sideboarded = row_dict['Sideboarded']
+        self.annotation = row_dict['Annotation']
     
     def display_card(self, newline):
         f = '\t'
@@ -24,12 +27,14 @@ class Card:
             
         print(
             f'Card Name: {self.card_name}{f}Card Quantity: {self.card_quantity}{f}MTGO ID: {self.MTGO_ID}{f}' +
-            f'Rarity: {self.rarity}{f}'
+            f'Rarity: {self.rarity}{f}Set: {self.set}{f}Collector Number: {self.collector_number}{f}' + 
+            f'Premium: {self.premium}{f}Sideboarded: {self.sideboarded}{f}Annotation: {self.annotation}'
         )
+        print('-------------------------------------------------------------------------')
 
 
 with open('./example_data/example_collection_2.csv', 'r') as csv_file:
     reader = csv.DictReader(csv_file)
     for row in reader:
         card = Card(row, "MTGO")
-        card.display_card(False)
+        card.display_card(True)
