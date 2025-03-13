@@ -3,12 +3,12 @@ import csv
 class Card: 
     def __init__(self, row_dict, format):
         if(format == 'MTGO'):
+            self.format = 'MTGO'
             self.init_MTGO_entry(row_dict)
         else:
             print('No recognized card format')
             exit(1)
 
-        
     def init_MTGO_entry(self, row_dict):
         self.card_name = row_dict['Card Name']
         self.card_quantity = row_dict['Quantity']
@@ -32,9 +32,16 @@ class Card:
         )
         print('-------------------------------------------------------------------------')
 
+    def to_moxfield_format(self):
+        if(self.format == 'MTGO'):
+            return 'Sting Key'
+        else: 
+            print('Cannot export card, something catestrophic has happened')
+            exit(1)
 
 with open('./example_data/example_collection_2.csv', 'r') as csv_file:
     reader = csv.DictReader(csv_file)
     for row in reader:
         card = Card(row, "MTGO")
-        card.display_card(True)
+        #card.display_card(True)
+        print(card.to_moxfield_format())
