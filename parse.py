@@ -28,7 +28,7 @@ class Card:
             
         print(
             f'Card Name: {self.card_name}{f}Card Quantity: {self.card_quantity}{f}MTGO ID: {self.MTGO_ID}{f}' +
-            f'Rarity: {self.rarity}{f}Set: {self.set}{f}Collector Number: {self.collector_number}{f}' + 
+            f'Rarity: {self.rarity}{f}Set: {self.set_code}{f}Collector Number: {self.collector_number}{f}' + 
             f'Premium: {self.premium}{f}Sideboarded: {self.sideboarded}{f}Annotation: {self.annotation}'
         )
         print('-------------------------------------------------------------------------')
@@ -57,11 +57,14 @@ class Card:
 
 import_csv_format = FORMAT_MTGO
 export_format = FORMAT_MOXFIELD
-with open('./example_data/foil_example.csv', 'r') as csv_file:
-    reader = csv.DictReader(csv_file)
+with open('./example_data/foil_example.csv', 'r') as csv_input:
+    reader = csv.DictReader(csv_input)
+    # can turn this into a function that just requires the format type and maybe import/export
     if(export_format == FORMAT_MOXFIELD):
-        for row in reader:
-            card = Card(row, import_csv_format)
-            #card.display_card(True)
-            #print(card.to_moxfield_format())
-    print(join_headers(MOXFIELD_HEADERS))
+        with open('./result.csv', 'w') as csv_output:
+            csv_output.write(join_headers(MOXFIELD_HEADERS) + "\n")
+            for row in reader:
+                card = Card(row, import_csv_format)
+                csv_output.write(card.to_moxfield_format() + "\n")
+                #card.display_card(True)
+                #print(card.to_moxfield_format())
