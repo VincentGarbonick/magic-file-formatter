@@ -65,6 +65,3 @@ with open('./example_data/foil_example.csv', 'r') as csv_input:
             csv_output.write(join_headers(MOXFIELD_HEADERS) + "\n")
             for row in reader:
                 card = Card(row, import_csv_format)
-                csv_output.write(card.to_moxfield_format() + "\n")
-                #card.display_card(True)
-                #print(card.to_moxfield_format())
