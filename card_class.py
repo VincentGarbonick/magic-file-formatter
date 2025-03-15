@@ -1,16 +1,22 @@
 from constants import *
 from moxfield_set_code_mapper import MoxfieldMapper
+import xml.etree.ElementTree as ET
 
 class Card: 
-    def __init__(self, data, format):
-        if(format == FORMAT_MTGO_CSV):
-            self.format = FORMAT_MTGO_CSV
-            self.init_MTGO_entry(data)
+    def __init__(self, data, output_format):
+        if(output_format == FORMAT_MTGO_CSV):
+            self.input_format = FORMAT_MTGO_CSV
+            self.output_format = FORMAT_MTGO_CSV
+            self.init_MTGO_CSV_entry(data)
+        elif(output_format == FORMAT_MTGO_DEK):
+            self.input_format = FORMAT_MTGO_DEK
+            self.output_format = FORMAT_MTGO_CSV
+            self.init_MTGO_DEK_entry(data)
         else:
-            print('No recognized card format')
+            print('No recognized card output format')
             exit(1)
 
-    def init_MTGO_entry(self, row_dict):
+    def init_MTGO_CSV_entry(self, row_dict):
         self.card_name = row_dict['Card Name']
         self.card_quantity = row_dict['Quantity']
         self.MTGO_ID = row_dict['ID #']
@@ -20,6 +26,17 @@ class Card:
         self.premium = row_dict['Premium']
         self.sideboarded = row_dict['Sideboarded']
         self.annotation = row_dict['Annotation']
+
+    def init_MTGO_DEK_entry(self, child):
+        self.card_name = child['Name']
+        self.card_quantity = child['Quantity']
+        self.MTGO_ID = child['CatID']
+        self.rarity = ""
+        self.set_code = ""
+        self.collector_number = ""
+        self.premium = ""
+        self.sideboarded = child['Sideboard']
+        self.annotation = child['Annotation']
     
     def display_card(self, newline):
         f = '\t'
@@ -34,7 +51,7 @@ class Card:
         print('-------------------------------------------------------------------------')
 
     def to_moxfield_format(self):
-        if(self.format == FORMAT_MTGO_CSV):
+        if(self.output_format == FORMAT_MTGO_CSV):
             card_dict = {
                 "Count": self.card_quantity,
                 "Name": self.card_name,

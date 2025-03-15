@@ -20,9 +20,18 @@ MOXFIELD_DEFAULT_LANGUAGE = "en"
 MOXFIELD_FALSE = "FALSE"
 MOXFIELD_TRUE = "TRUE"
 
-# CSV Formats 
-FORMAT_MTGO_CSV = "MTGO"
+# Formats 
+FORMAT_MTGO_CSV = "MTGO_CSV"
+FORMAT_MTGO_DEK = "MTGO_DEK"
 FORMAT_MOXFIELD = "Moxfield"
+
+# Extensions 
+DEK = ".dek"
+CSV = ".csv"
+XML = ".xml"
+
+# xml
+MTGO_CARD_TAG = "Cards"
 
 def join_headers(headers):
     return ",".join(f'"{header}"' for header in headers)
