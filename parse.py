@@ -13,8 +13,9 @@ def generate_csv(input_file_path, output_file_path, input_format, output_format)
                 csv_output.write(join_headers(MOXFIELD_HEADERS) + "\n")
                 for row in reader:
                     card = Card(row, import_csv_format)
+                    #card.display_card(True)
                     csv_output.write(card.to_moxfield_format() + "\n")
 
 # how can I pass arguments manually in console?
 if __name__ == "__main__":
-    generate_csv('./example_data/foil_example.csv', './result.csv', FORMAT_MTGO, FORMAT_MOXFIELD)
+    generate_csv('./example_data/example_collection.csv', './result.csv', FORMAT_MTGO, FORMAT_MOXFIELD)
