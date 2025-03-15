@@ -26,6 +26,6 @@ if __name__ == "__main__":
     filetypes=(("CSV files", "*.csv"), ("All files", "*.*"))
     )
     if file_path:   
-        generate_csv(file_path, './result.csv', FORMAT_MTGO, FORMAT_MOXFIELD)
+        generate_csv(file_path, './result.csv', FORMAT_MTGO_CSV, FORMAT_MOXFIELD)
     else: 
         print('No file path given :(')

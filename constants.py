@@ -21,7 +21,7 @@ MOXFIELD_FALSE = "FALSE"
 MOXFIELD_TRUE = "TRUE"
 
 # CSV Formats 
-FORMAT_MTGO = "MTGO"
+FORMAT_MTGO_CSV = "MTGO"
 FORMAT_MOXFIELD = "Moxfield"
 
 def join_headers(headers):

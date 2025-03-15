@@ -2,10 +2,10 @@ from constants import *
 from moxfield_set_code_mapper import MoxfieldMapper
 
 class Card: 
-    def __init__(self, row_dict, format):
-        if(format == FORMAT_MTGO):
-            self.format = FORMAT_MTGO
-            self.init_MTGO_entry(row_dict)
+    def __init__(self, data, format):
+        if(format == FORMAT_MTGO_CSV):
+            self.format = FORMAT_MTGO_CSV
+            self.init_MTGO_entry(data)
         else:
             print('No recognized card format')
             exit(1)
@@ -34,7 +34,7 @@ class Card:
         print('-------------------------------------------------------------------------')
 
     def to_moxfield_format(self):
-        if(self.format == FORMAT_MTGO):
+        if(self.format == FORMAT_MTGO_CSV):
             card_dict = {
                 "Count": self.card_quantity,
                 "Name": self.card_name,
