@@ -41,6 +41,8 @@ class MoxfieldMapper:
         "AP": "APC",
         # Odyssey
         "OD": "ODY",
+        # Dominaria
+        "DAR": "DOM", # IDK why this one is like this
     }
     
     @staticmethod
