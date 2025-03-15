@@ -1,4 +1,5 @@
 from constants import *
+from moxfield_set_code_mapper import MoxfieldMapper
 
 class Card: 
     def __init__(self, row_dict, format):
@@ -14,7 +15,7 @@ class Card:
         self.card_quantity = row_dict['Quantity']
         self.MTGO_ID = row_dict['ID #']
         self.rarity = row_dict['Rarity']
-        self.set_code = row_dict['Set']
+        self.set_code = MoxfieldMapper.update_code(row_dict['Set'])
         self.collector_number = row_dict['Collector #']
         self.premium = row_dict['Premium']
         self.sideboarded = row_dict['Sideboarded']
