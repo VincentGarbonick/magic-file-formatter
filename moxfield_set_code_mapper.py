@@ -42,3 +42,7 @@ class MoxfieldMapper:
         # Odyssey
         "OD": "ODY",
     }
+    
+    @staticmethod
+    def update_code(self, original_code):
+        return self.code_maps.get(original_code, original_code)
