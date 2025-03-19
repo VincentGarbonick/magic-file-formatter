@@ -21,8 +21,8 @@ MOXFIELD_FALSE = "FALSE"
 MOXFIELD_TRUE = "TRUE"
 
 # Formats 
-FORMAT_MTGO_CSV = "MTGO_CSV"
-FORMAT_MTGO_DEK = "MTGO_DEK"
+FORMAT_MTGO_CSV = "MTGO CSV"
+FORMAT_MTGO_DEK = "MTGO DEK"
 FORMAT_MOXFIELD = "Moxfield"
 
 # Extensions 
@@ -32,6 +32,10 @@ XML = ".xml"
 
 # xml
 MTGO_CARD_TAG = "Cards"
+
+# Frontend Dropdown Options
+INPUT_FORMATS = [FORMAT_MTGO_DEK, FORMAT_MTGO_CSV]
+OUTPUT_FORMATS = [FORMAT_MOXFIELD]
 
 def join_headers(headers):
     return ",".join(f'"{header}"' for header in headers)

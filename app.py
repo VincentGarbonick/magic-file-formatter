@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog, ttk
 import os
+from constants import * 
 
 def center_window(root, width=450, height=280):
     screen_width = root.winfo_screenwidth()
@@ -32,6 +33,16 @@ def convert_file():
     output_dir_path = output_dir.get()
     input_format = input_format_var.get()
     output_format = output_format_var.get()
+    
+    file_name, file_extension = os.path.splitext(input_file)
+
+    if(file_extension != DEK and input_format == FORMAT_MTGO_DEK):
+        update_status("Error: Mismatch between input format and file extension.")
+        return
+
+    if(file_extension != CSV and input_format == FORMAT_MTGO_CSV):
+        update_status("Error: Mismatch between input format and file extension.")
+        return
 
     print(f'Input File: {input_file}\nOutput File: {output_dir_path}\nInput Format: {input_format}\nOutput Format: {output_format}')
     
@@ -61,8 +72,8 @@ if __name__ == "__main__":
     
     # Variables
     status = tk.StringVar()
-    input_format_var = tk.StringVar(value="FOO") # use an array with index 1 in the constants for this
-    output_format_var = tk.StringVar(value="BAR")
+    input_format_var = tk.StringVar(value=INPUT_FORMATS[0]) # use an array with index 1 in the constants for this
+    output_format_var = tk.StringVar(value=OUTPUT_FORMATS[0])
     output_dir = tk.StringVar(value=os.getcwd())
     
     # Main frame with padding
@@ -77,7 +88,7 @@ if __name__ == "__main__":
     
     # Input format selection
     ttk.Label(main_frame, text="Input Format:").grid(row=1, column=0, sticky=tk.W, pady=(0, 10))
-    input_format_options = ["FOO", "BAR", "BAZ"]
+    input_format_options = INPUT_FORMATS
     input_format_dropdown = ttk.Combobox(main_frame, textvariable=input_format_var, values=input_format_options, state="readonly", width=10)
     input_format_dropdown.grid(row=1, column=1, sticky=tk.W, padx=5, pady=(0, 10))
     
@@ -89,7 +100,7 @@ if __name__ == "__main__":
 
     # Output format selection
     ttk.Label(main_frame, text="Output Format:").grid(row=4, column=0, sticky=tk.W, pady=(0, 10))
-    output_format_options = ["FOO", "BAR", "BAZ"]
+    output_format_options = OUTPUT_FORMATS
     output_format_dropdown = ttk.Combobox(main_frame, textvariable=output_format_var, values=output_format_options, state="readonly", width=10)
     output_format_dropdown.grid(row=4, column=1, sticky=tk.W, padx=5, pady=(0, 10))
 
