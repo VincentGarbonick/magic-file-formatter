@@ -57,6 +57,7 @@ def convert_file():
     update_status(f"Converting from {input_format} to {output_format}...")
     full_output_path = output_dir_path + "/" + RESULT_FILE_NAME + CSV
     generate_csv(input_file, full_output_path, input_format, output_format)
+    output_file.set(full_output_path)
     update_status("Conversion completed successfully!")
     
 def update_status(message):
@@ -76,6 +77,7 @@ if __name__ == "__main__":
     input_format_var = tk.StringVar(value=INPUT_FORMATS[0]) # use an array with index 1 in the constants for this
     output_format_var = tk.StringVar(value=OUTPUT_FORMATS[0])
     output_dir = tk.StringVar(value=os.getcwd())
+    output_file = tk.StringVar()
     
     # Main frame with padding
     main_frame = ttk.Frame(root, padding="20 20 20 20")
@@ -107,7 +109,7 @@ if __name__ == "__main__":
 
     # Output filename preview 
     ttk.Label(main_frame, text="Output File:").grid(row=5, column=0, sticky=tk.W, pady=(0, 10))
-    output_entry = ttk.Entry(main_frame, width=30, state="readonly")
+    output_entry = ttk.Entry(main_frame, textvariable=output_file, width=30, state="readonly")
     output_entry.grid(row=5, column=1, padx=5, pady=(0, 10), sticky=tk.EW)
 
     # Space before buttons
