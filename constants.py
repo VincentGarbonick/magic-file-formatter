@@ -33,9 +33,10 @@ XML = ".xml"
 # xml
 MTGO_CARD_TAG = "Cards"
 
-# Frontend Dropdown Options
+# Frontend constants
 INPUT_FORMATS = [FORMAT_MTGO_DEK, FORMAT_MTGO_CSV]
 OUTPUT_FORMATS = [FORMAT_MOXFIELD]
+RESULT_FILE_NAME = "result"
 
 def join_headers(headers):
     return ",".join(f'"{header}"' for header in headers)

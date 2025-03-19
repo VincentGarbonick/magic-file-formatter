@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import filedialog, ttk
 import os
 from constants import * 
+from parse import generate_csv
 
 def center_window(root, width=450, height=280):
     screen_width = root.winfo_screenwidth()
@@ -33,6 +34,14 @@ def convert_file():
     output_dir_path = output_dir.get()
     input_format = input_format_var.get()
     output_format = output_format_var.get()
+
+    if not input_file:
+        update_status("Error: No input file selected.")
+        return
+    
+    if not output_dir_path:
+        update_status("Error: No output location specified.")
+        return
     
     file_name, file_extension = os.path.splitext(input_file)
 
@@ -44,19 +53,11 @@ def convert_file():
         update_status("Error: Mismatch between input format and file extension.")
         return
 
-    print(f'Input File: {input_file}\nOutput File: {output_dir_path}\nInput Format: {input_format}\nOutput Format: {output_format}')
-    
-    if not input_file:
-        update_status("Error: No input file selected.")
-        return
-    
-    if not output_dir_path:
-        update_status("Error: No output location specified.")
-        return
-    
-    # Placeholder logic
+    # print(f'Input File: {input_file}\nOutput File: {output_dir_path}\nInput Format: {input_format}\nOutput Format: {output_format}')
     update_status(f"Converting from {input_format} to {output_format}...")
-    root.after(1000, lambda: update_status("Conversion completed successfully!"))
+    full_output_path = output_dir_path + "/" + RESULT_FILE_NAME + CSV
+    generate_csv(input_file, full_output_path, input_format, output_format)
+    update_status("Conversion completed successfully!")
     
 def update_status(message):
     status.set(message)
