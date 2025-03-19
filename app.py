@@ -96,7 +96,7 @@ if __name__ == "__main__":
     # Input format selection
     ttk.Label(main_frame, text="Input Format:").grid(row=1, column=0, sticky=tk.W, pady=(0, 10))
     input_format_options = INPUT_FORMATS
-    input_format_dropdown = ttk.Combobox(main_frame, textvariable=input_format_var, values=input_format_options, state="readonly", width=10)
+    input_format_dropdown = ttk.Combobox(main_frame, textvariable=input_format_var, values=input_format_options, state="readonly", width=18)
     input_format_dropdown.grid(row=1, column=1, sticky=tk.W, padx=5, pady=(0, 10))
     
     # Output directory selection
@@ -108,7 +108,7 @@ if __name__ == "__main__":
     # Output format selection
     ttk.Label(main_frame, text="Output Format:").grid(row=4, column=0, sticky=tk.W, pady=(0, 10))
     output_format_options = OUTPUT_FORMATS
-    output_format_dropdown = ttk.Combobox(main_frame, textvariable=output_format_var, values=output_format_options, state="readonly", width=10)
+    output_format_dropdown = ttk.Combobox(main_frame, textvariable=output_format_var, values=output_format_options, state="readonly", width=18)
     output_format_dropdown.grid(row=4, column=1, sticky=tk.W, padx=5, pady=(0, 10))
 
     # Output filename preview 
