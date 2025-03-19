@@ -36,7 +36,8 @@ class Card:
         self.collector_number = ""
         self.premium = ""
         self.sideboarded = child['Sideboard']
-        self.annotation = child['Annotation']
+        # annotation is not present in actual MTGO exported decks usually
+        self.annotation = child.get('Annotation', "")
     
     def display_card(self, newline):
         f = '\t'
