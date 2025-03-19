@@ -30,6 +30,7 @@ FORMAT_MOXFIELD_DECK = "Moxfield Deck" # similar to collection, but needs sidebo
 DEK = ".dek"
 CSV = ".csv"
 XML = ".xml"
+TXT = ".txt"
 
 # xml
 MTGO_CARD_TAG = "Cards"
