@@ -74,7 +74,7 @@ if __name__ == "__main__":
     
     # Variables
     status = tk.StringVar()
-    input_format_var = tk.StringVar(value=INPUT_FORMATS[0]) # use an array with index 1 in the constants for this
+    input_format_var = tk.StringVar(value=INPUT_FORMATS[0])
     output_format_var = tk.StringVar(value=OUTPUT_FORMATS[0])
     output_dir = tk.StringVar(value=os.getcwd())
     output_file = tk.StringVar()
