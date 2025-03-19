@@ -56,9 +56,13 @@ def convert_file():
     # print(f'Input File: {input_file}\nOutput File: {output_dir_path}\nInput Format: {input_format}\nOutput Format: {output_format}')
     update_status(f"Converting from {input_format} to {output_format}...")
     full_output_path = output_dir_path + "/" + RESULT_FILE_NAME + CSV
-    generate_csv(input_file, full_output_path, input_format, output_format)
-    output_file.set(full_output_path)
-    update_status("Conversion completed successfully!")
+    result = generate_csv(input_file, full_output_path, input_format, output_format)
+
+    if result == SUCCESS_CODE: 
+        output_file.set(full_output_path)
+        update_status("Conversion completed successfully!")
+    else:
+        update_status(f'Exception: {result}')
     
 def update_status(message):
     status.set(message)
