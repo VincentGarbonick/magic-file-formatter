@@ -34,6 +34,7 @@ XML = ".xml"
 MTGO_CARD_TAG = "Cards"
 
 # Frontend constants
+APP_NAME = "MTG File Formatter"
 INPUT_FORMATS = [FORMAT_MTGO_DEK, FORMAT_MTGO_CSV]
 OUTPUT_FORMATS = [FORMAT_MOXFIELD]
 RESULT_FILE_NAME = "result"

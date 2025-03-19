@@ -66,7 +66,7 @@ def update_status(message):
 if __name__ == "__main__":
     # Create the main window
     root = tk.Tk()
-    root.title("File Converter")
+    root.title(APP_NAME)
     root.resizable(False, False)
     
     # Center the window
