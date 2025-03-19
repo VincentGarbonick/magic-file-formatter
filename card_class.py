@@ -28,7 +28,6 @@ class Card:
         self.annotation = row_dict['Annotation']
 
     def init_MTGO_DEK_entry(self, child):
-        print(child)
         self.card_name = child['Name']
         self.card_quantity = child['Quantity']
         self.MTGO_ID = child['CatID']
