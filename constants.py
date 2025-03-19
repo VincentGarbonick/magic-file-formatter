@@ -23,7 +23,8 @@ MOXFIELD_TRUE = "TRUE"
 # Formats 
 FORMAT_MTGO_CSV = "MTGO CSV"
 FORMAT_MTGO_DEK = "MTGO DEK"
-FORMAT_MOXFIELD = "Moxfield"
+FORMAT_MOXFIELD_COLLECTION = "Moxfield Collection"
+FORMAT_MOXFIELD_DECK = "Moxfield Deck" # similar to collection, but needs sideboard field
 
 # Extensions 
 DEK = ".dek"
@@ -36,7 +37,7 @@ MTGO_CARD_TAG = "Cards"
 # Frontend constants
 APP_NAME = "MTG File Formatter"
 INPUT_FORMATS = [FORMAT_MTGO_DEK, FORMAT_MTGO_CSV]
-OUTPUT_FORMATS = [FORMAT_MOXFIELD]
+OUTPUT_FORMATS = [FORMAT_MOXFIELD_COLLECTION]
 RESULT_FILE_NAME = "result"
 
 # Backend constnats 

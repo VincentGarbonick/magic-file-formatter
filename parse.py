@@ -13,7 +13,7 @@ def generate_csv(input_file_path, output_file_path, input_format, output_format)
             with open(input_file_path, 'r') as csv_input:
                 reader = csv.DictReader(csv_input)
                 # can turn this into a function that just requires the format type and maybe import/export
-                if(export_format == FORMAT_MOXFIELD):
+                if(export_format == FORMAT_MOXFIELD_COLLECTION):
                     with open(output_file_path, 'w') as csv_output:
                         csv_output.write(join_headers(MOXFIELD_HEADERS) + "\n")
                         for row in reader:
@@ -23,7 +23,7 @@ def generate_csv(input_file_path, output_file_path, input_format, output_format)
         elif input_format == FORMAT_MTGO_DEK:
             with open(input_file_path, 'r') as file:
                 xml_content = file.read()
-                if(export_format == FORMAT_MOXFIELD):
+                if(export_format == FORMAT_MOXFIELD_COLLECTION):
                     with open(output_file_path, 'w') as csv_output:
                         csv_output.write(join_headers(MOXFIELD_HEADERS) + "\n")
                         root = ET.fromstring(xml_content)
@@ -47,9 +47,9 @@ if __name__ == "__main__":
     file_name, file_extension = os.path.splitext(file_path)
     if file_path:
         if(file_extension == CSV):
-            result = generate_csv(file_path, './result.csv', FORMAT_MTGO_CSV, FORMAT_MOXFIELD)
+            result = generate_csv(file_path, './result.csv', FORMAT_MTGO_CSV, FORMAT_MOXFIELD_COLLECTION)
         elif(file_extension == DEK):
-            result = generate_csv(file_path, './result.csv', FORMAT_MTGO_DEK, FORMAT_MOXFIELD)
+            result = generate_csv(file_path, './result.csv', FORMAT_MTGO_DEK, FORMAT_MOXFIELD_COLLECTION)
     
         if result != SUCCESS_CODE:
             if result == PASSTHROUGH_CODE:
