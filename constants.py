@@ -39,5 +39,10 @@ INPUT_FORMATS = [FORMAT_MTGO_DEK, FORMAT_MTGO_CSV]
 OUTPUT_FORMATS = [FORMAT_MOXFIELD]
 RESULT_FILE_NAME = "result"
 
+# Backend constnats 
+SUCCESS_CODE = 0
+FAILURE_CODE = 1
+PASSTHROUGH_CODE = 10
+
 def join_headers(headers):
     return ",".join(f'"{header}"' for header in headers)
