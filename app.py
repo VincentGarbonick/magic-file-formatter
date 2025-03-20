@@ -74,9 +74,12 @@ if __name__ == "__main__":
     root.resizable(False, False)
 
     # Update the Icon
-    icon = tk.PhotoImage(file='./assets/icon.png')
-    root.iconphoto(True, icon)
-    
+    if platform.system() == "Windows":
+        root.iconbitmap('./assets/icon.ico')
+    else:
+        icon = tk.PhotoImage(file='./assets/icon.png')
+        root.iconphoto(True, icon)
+
     # Center the window
     center_window(root, 450, 310)
     
