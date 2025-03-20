@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog, ttk
 import os
+import platform
 from constants import * 
 from parse import generate_csv
 
