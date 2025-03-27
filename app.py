@@ -5,6 +5,16 @@ import platform
 from constants import * 
 from parse import generate_csv
 
+def resource_path(relative_path):
+    try:
+        # When running in PyInstaller bundle
+        base_path = sys._MEIPASS
+    except AttributeError:
+        # When running as script
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
 def center_window(root, width=450, height=280):
     screen_width = root.winfo_screenwidth()
     screen_height = root.winfo_screenheight()
@@ -76,10 +86,14 @@ if __name__ == "__main__":
 
     # Update the Icon
     if platform.system() == "Windows":
-        root.iconbitmap('./assets/icon.ico')
+        icon_path = resource_path('assets/icon.ico')
+        if os.path.exists(icon_path):
+            root.iconbitmap(icon_path)
     else:
-        icon = tk.PhotoImage(file='./assets/icon.png')
-        root.iconphoto(True, icon)
+        icon_path = resource_path('assets/icon.png')
+        if os.path.exists(icon_path):
+            icon = tk.PhotoImage(file=icon_path)
+            root.iconphoto(True, icon)
 
     # Center the window
     center_window(root, 450, 310)
