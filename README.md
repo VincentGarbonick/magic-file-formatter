@@ -35,7 +35,7 @@ If you can't run it as a script, it is highly likely your python is not installe
 ### Magic File Formatter  
 1. Run the application as a script or directly launch the `.exe`.  
 2. Use the **Browse** feature to find your input file.  
-3. Choose the input format—either `.dek` or `.csv`—based on how you exported the file.  
+3. Choose the input format, either `.dek` or `.csv`, based on how you exported the file.  
 4. Select the folder where you want the output to be saved. Leave it blank to output to the same folder the application is running from.  
 5. The only available output format right now is **Moxfield**.  
 6. Press **Convert**.  
